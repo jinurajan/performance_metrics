@@ -53,6 +53,10 @@ Feel free to ask me a question on skype vitaliy.kotik.
 
 - Date format is - ***YYYY-MM-DD*** as per the implementation. 
 
+- Pagination to be done for the metrics (eg: with limit and offset request arguments)
+
+- Total and count to be included in the response for metrics
+
 
 ## How to run this application
 ``` bash
