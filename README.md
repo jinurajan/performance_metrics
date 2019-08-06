@@ -61,6 +61,8 @@ Feel free to ask me a question on skype vitaliy.kotik.
 
 - Access Control mechanism using admin authentication to be Integrated. This is  deliberately avoided as it is not in the scope of the task.
 
+- UTs (unit test cases)/ FTs (functional testcases) to be included
+
 
 ## How to run this application
 ``` bash
