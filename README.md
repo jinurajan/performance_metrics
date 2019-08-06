@@ -77,7 +77,7 @@ Try the above URLs on browser / via any REST API Client such as curl
 
 2. http://127.0.0.1:8000/api/performance_metrics?date_from=2017-05-01&date_to=2017-05-31&os=ios&group_by=date&sort_by=revenue&sort_order=asc
 
-3. http://127.0.0.1:8000/api/performance_metrics?country=CA&group_by=channel&sort_by=cpi&sort_order=desc
+3. http://127.0.0.1:8000/api/performance_metrics?date_from=2017-06-01&os=ios&group_by=os&sort_by=revenue&sort_order=desc
 
 4. http://127.0.0.1:8000/api/performance_metrics?country=CA&group_by=channel&sort_by=cpi&sort_order=desc
 ```
