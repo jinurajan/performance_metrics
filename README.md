@@ -54,4 +54,31 @@ Feel free to ask me a question on skype vitaliy.kotik.
 - Date format is - ***YYYY-MM-DD*** as per the implementation. 
 
 
+## How to run this application
+``` bash
+	pipenv install
+	pipenv shell
+	python manage.py runserver
+```
+Webserver will start running on on your browser http://127.0.0.1:8000/
+
+Try the above URLs on browser / via any REST API Client such as curl
+
+``` bash
+1. http://127.0.0.1:8000/api/performance_metrics?date_to=2017-06-01&group_by=channel,country&sort_by=clicks&sort_order=desc
+
+2. http://127.0.0.1:8000/api/performance_metrics?date_from=2017-05-01&date_to=2017-05-31&os=ios&group_by=date&sort_by=revenue&sort_order=asc
+
+3. http://127.0.0.1:8000/api/performance_metrics?country=CA&group_by=channel&sort_by=cpi&sort_order=desc
+
+4. http://127.0.0.1:8000/api/performance_metrics?country=CA&group_by=channel&sort_by=cpi&sort_order=desc
+```
+
+## How to populate Data in database
+
+```bash
+cd tools/
+./seeder.sh
+```
+
 When ready, please share your private repository with https://github.com/kotik
