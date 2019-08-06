@@ -26,15 +26,15 @@ Please make sure that the client can use filtering, grouping, sorting at the sam
  ...
  ```
  ```bash
- /api/performance_metrics?date_to=01-06-2017&group_by=channel&sort_by=clicks&sort_order=desc
+ /api/performance_metrics?date_to=2017-06-01&group_by=channel&sort_by=clicks&sort_order=desc
  ```
 2. Show the number of installs that occurred in May of 2017 on iOS, broken down by date, sorted by date in ascending order.
 ``` bash
-    /api/performance_metrics?date_from=01-05-2017&date_to=31-05-2017&os=ios&group_by=os=sort_by=+revenue
+    /api/performance_metrics?date_from=2017-05-01&date_to=2017-05-31&os=ios&group_by=os=sort_by=+revenue
 ```
 3. Show revenue, earned on June 1, 2017 in US, broken down by operating system and sorted by revenue in descending order.
 ``` bash
-   /api/performance_metrics?date_from=01-06-2017&os=ios&group_by=os=sort_by=revenue&sort_order=desc
+   /api/performance_metrics?date_from=2017-06-01&os=ios&group_by=os=sort_by=revenue&sort_order=desc
 ```
 4. Show CPI and spend for Canada (CA) broken down by channel ordered by CPI in descending order. Please think carefully which is an appropriate aggregate function for CPI.
 ``` bash
