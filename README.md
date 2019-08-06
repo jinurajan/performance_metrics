@@ -26,7 +26,7 @@ Please make sure that the client can use filtering, grouping, sorting at the sam
  ...
  ```
  ```bash
- /api/performance_metrics?date_to=01-06-2017&group_by=channel&sort_by=-clicks
+ /api/performance_metrics?date_to=01-06-2017&group_by=channel&sort_by=clicks&sort_order=desc
  ```
 2. Show the number of installs that occurred in May of 2017 on iOS, broken down by date, sorted by date in ascending order.
 ``` bash
@@ -34,11 +34,11 @@ Please make sure that the client can use filtering, grouping, sorting at the sam
 ```
 3. Show revenue, earned on June 1, 2017 in US, broken down by operating system and sorted by revenue in descending order.
 ``` bash
-   /api/performance_metrics?date_from=01-06-2017&os=ios&group_by=os=sort_by=-revenue
+   /api/performance_metrics?date_from=01-06-2017&os=ios&group_by=os=sort_by=revenue&sort_order=desc
 ```
 4. Show CPI and spend for Canada (CA) broken down by channel ordered by CPI in descending order. Please think carefully which is an appropriate aggregate function for CPI.
 ``` bash
-   /api/performance_metrics?country=CA&group_by=channel&sort_by=+cpi
+   /api/performance_metrics?country=CA&group_by=channel&sort_by=cpi&sort_order=desc
 ```
 Please make sure you have single API endpoint that is compliant with all use-cases described above and explicitly specify urls for each of 4 cases in your Readme.
 
@@ -49,10 +49,9 @@ Please have in mind that we use Python 3 and Django. Don't spend any time on Doc
 Feel free to ask me a question on skype vitaliy.kotik.
 
 ## Assumptions / Improvements to be done
-- Filter is on single value for a field. for example: ***channels=a,b,c*** is not possible as per the current implementation. Instead *channel=a* is possible
 - Column preferences - request arguments to accept the columns to be returned. For eg: ***columns=cpi,channel,date,country*** will return all the columns mentioned in the columns argument. Default columns would be all the columns: ***date,channel,country,os,impressions,clicks,installs,spend,revenue,cpi***
 
-- Date format is - ***DD-MM-YYYY*** as per the implementation. 
+- Date format is - ***YYYY-MM-DD*** as per the implementation. 
 
 
 When ready, please share your private repository with https://github.com/kotik

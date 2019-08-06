@@ -15,16 +15,22 @@ class Metric(models.Model):
     spend = models.FloatField(default=0)
     revenue = models.FloatField(default=0)
 
-    def __str__(self):
-        # return {
-        #     "date": self.date,
-        #     "channel": self.channel,
-        #     "country": self.country,
-        #     "os": self.os,
-        #     "impressions": self.impressions,
-        #     "clicks": self.clicks,
-        #     "installs": self.installs,
-        #     "spend": self.spend,
-        #     "revenue": self.revenue
-        # }
-        return self.channel
+    @property
+    def cpi(self):
+        return round(self.spend / self.installs, 2)
+
+    def get(self, filters=None, group_by=None, sort_by=None):
+        query = Metric.objects
+        if filters:
+            query = query.filter(**filters)
+        if group_by:
+            query = query.annotate(
+                models.Sum('impressions'),
+                models.Sum('clicks'),
+                models.Sum('installs'),
+                models.Sum('spend'),
+                models.Sum('revenue')
+            )
+        if sort_by:
+            query = query.order_by(*sort_by)
+        return query.all()
