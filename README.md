@@ -51,11 +51,15 @@ Feel free to ask me a question on skype vitaliy.kotik.
 ## Assumptions / Improvements to be done
 - Column preferences - request arguments to accept the columns to be returned. For eg: ***columns=cpi,channel,date,country*** will return all the columns mentioned in the columns argument. Default columns would be all the columns: ***date,channel,country,os,impressions,clicks,installs,spend,revenue,cpi***
 
-- Date format is - ***YYYY-MM-DD*** as per the implementation. 
+- Date format is - ***YYYY-MM-DD*** as per the API implementation. 
 
 - Pagination to be done for the metrics (eg: with limit and offset request arguments)
 
-- Total and count to be included in the response for metrics
+- Total and count (number of metrics in a single API call) to be included in the response for metrics
+
+- Use python packages like incoming to validate the request arguments and body
+
+- Access Control mechanism using admin authentication to be Integrated. This is  deliberately avoided as it is not in the scope of the task.
 
 
 ## How to run this application
