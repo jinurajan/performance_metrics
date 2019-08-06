@@ -29,25 +29,25 @@ class ListMetrics(APIView):
             group_by_values = args["group_by"].split(",")
             for each in group_by_values:
                 if each not in APIConstants.AVAILABLE_GROUP_BY:
-                    raise SuspiciousOperation("Invalid Group_by:{}".format(each))
+                    raise SuspiciousOperation("Invalid group_by:{}".format(each))
                 group_by.append(each)
             args.pop('group_by')
         if 'sort_order' in args:
             if args['sort_order'] not in APIConstants.AVAILABLE_ORDERS:
-                raise SuspiciousOperation("Invalid Group_by:{}".format(each))
+                raise SuspiciousOperation("Invalid sort_order:{}".format(each))
             else:
                 sort_order = '' if params['sort_order'] == ORDER_BY.ASCENDING_ORDER else '-'
             args.pop('sort_order')
         if 'sort_by' in args:
             if args['sort_by'] not in APIConstants.SORT_FIELDS:
-                raise SuspiciousOperation("Invalid Group_by:{}".format(each))
+                raise SuspiciousOperation("Invalid sort_by:{}".format(each))
             sort_by.append("{}{}".format(sort_order, args.pop('sort_by')[0]))
         else:
             sort_by.append(APIConstants.DEFAULT_SORT_BY)
         if args:
             for each, value in args.items():
                 if each not in APIConstants.AVAILABLE_FILTERS:
-                    raise SuspiciousOperation("Invalid Argument:{}".format(each))
+                    raise SuspiciousOperation("Invalid argument:{}".format(each))
                 if each == "date_from":
                     filters["date__gte"] = value
                 elif each == "date_to":

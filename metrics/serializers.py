@@ -3,6 +3,9 @@ from .models import Metric
 
 
 class MetricSerializer():
+    """
+        Customized MetricSerializer for Metric Data Model
+    """
     sum_fields = set(['impressions__sum', 'clicks__sum',
                       'installs__sum', 'spend__sum', 'revenue__sum'])
 
@@ -27,7 +30,6 @@ class MetricSerializer():
                     result[key] = value
                 else:
                     result[key.replace("__sum", "")] = value
-            result['cpi'] = round(result['spend'] / result['installs'], 2)
             return result
 
     def adapt_list(self, metrics):
