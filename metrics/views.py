@@ -11,15 +11,38 @@ from .constants import APIConstants, ORDER_BY
 class ListMetrics(APIView):
     """
     List all metrics
+    possible request args:
+    1. Filter:
+        * date_from, date_to - YYYY-MM-DD Format
+        * channel - eg: channel=adcolony,apple_search_ads
+        * country - eg: country=US,DE
+        * os - eg:os=android, ios
+    2. Group by: Multiple fields
+        * date,channel, country,os
+    3. sort_by: Single Field
+        * date, country, impressions, channel, os,
+          clicks, installs, spend, revenue, cpi - eg: sort_by=date
+    4. sort_order : desc/asc
+        * desc for descending order
+        * asc for ascending order
     """
     def get(self, request, format=None):
-        filters, group_by, sort_by = self.__get_filters_group_by_sortby(
+        """
+        This function returns API Response for GET call to
+        /performance_metrics API call
+        """
+        filters, group_by, sort_by = self.__get_filters_groupby_sortby(
             request.query_params)
         metrics = Metric().get(filters, group_by, sort_by)
         response = MetricSerializer().adapt_list(metrics)
         return Response(response)
 
-    def __get_filters_group_by_sortby(self, params):
+    def __get_filters_groupby_sortby(self, params):
+        """
+        This function formats filters, group_by and
+        sort_by fields to be used in DAL Layer
+        (data abstraction layer) from request arguments
+        """
         filters = {}
         args = params.copy()
         group_by = []
